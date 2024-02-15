@@ -64,4 +64,53 @@
     GROUP BY column1, column2;
     HAVING group_condition;
 
+#### DML
 
+    INSERT INTO table_name (column1, column2, column3)
+    VALUES (column1_value, column2_value, column3_value);
+
+    REPLACE INTO table_name (column1, column2, column3)
+    VALUES (column1_value, column2_value, column3_value);
+
+    REPLACE INTO table_name (column1, column2, column3)
+    SET column_name = new_value, column_name1 = new_value...;
+
+#### DDL
+
+    CREATE TABLE Customers (
+        CustomerID INT NOT NULL PRIMARY KEY,
+        FullName VARCHAR(100) NOT NULL,
+        PhoneNumber INT NOT NULL UNIQUE
+    );
+
+    CREATE TABLE Bookings (
+        BookingID INT NOT NULL PRIMARY KEY,
+        BookingDate DATE NOT NULL,
+        TableNumber INT NOT NULL,
+        NumberOfGuests INT NOT NULL CHECK(NumberOfGuests<=8),
+        CustomerID INT NOT NULL,
+        FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID) ON DELETE CASCADE ON UPDATE CASCADE
+    );
+
+    SHOW COLUMNS FROM Bookings;
+
+    ALTER TABLE table_name  ADD/MODIFY/DROP column_name type constraints, MODIFY column_name2 type constraints,...;
+
+Copy data and metadata local and accross databases:
+
+    CREATE TABLE new_table_name
+    SELECT columns...
+    FROM existing_table_name;
+    WHERE condition;
+
+    CREATE TABLE database_X_name.new_table_name
+    SELECT columns...
+    FROM database_Y_name.existing_table_name;
+    WHERE condition;
+
+Copy with constraints and add data:
+
+    CREATE TABLE new_table_name LIKE existing_table_name;
+    INSERT INTO new_table_name SELECT * from existing_table_name;
+    SHOW COLUMNS FROM new_table_name;
+    SELECT * FROM new_table_name;
