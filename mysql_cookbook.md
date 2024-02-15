@@ -132,3 +132,50 @@ Create views:
     RENAME TABLE old_table_name TO new_table_name;
 
     DROP view view_name;
+
+#### Functions
+
+AGGREGATE FUNCTIONS:
+
+    SUM() AVG() MAX() MIN() COUNT()
+
+MATH FUNCTIONS:
+
+    ROUND() MOD()
+
+STRING FUNCTIONS:
+
+    CONCAT() SUBSTR() UCASE() LCASE()
+
+DATE FUNCTIONS:
+
+    CURRENT_DATE() CURRENT_TIME() DATE_FORMAT() DATEDIFF()
+
+COMPARISON FUNCTIONS:
+
+    GREATEST() LEAST() ISNULL()
+
+CONTROLL FLOW FUNCTIONS:
+
+    SELECT column_name
+    CASE
+        WHEN condition1 THEN result1
+        WHEN condition2 THEN result2
+        ELSE result
+    END AS alias
+    FROM table_name;
+
+#### Stored Procedures
+
+    CREATE PROCEDURE ProcedureName(parameter_value INT)
+    SELECT column_name
+    FROM table_name
+    WHERE column_value = parameter_value;   
+
+    CALL ProcedureName();
+
+    DROP PROCEDURE ProcedureName;
+
+#### User defined Functions
+
+    
