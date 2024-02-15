@@ -64,6 +64,13 @@
     GROUP BY column1, column2;
     HAVING group_condition;
 
+Subquery:
+
+    SELECT column_name(s)
+    FROM table_name
+    WHERE ? <=  
+    (SELECT column_name FROM table_name WHERE condition);
+
 #### DML
 
     INSERT INTO table_name (column1, column2, column3)
@@ -114,3 +121,14 @@ Copy with constraints and add data:
     INSERT INTO new_table_name SELECT * from existing_table_name;
     SHOW COLUMNS FROM new_table_name;
     SELECT * FROM new_table_name;
+
+Create views:
+
+    CREATE VIEW view_name AS
+    SELECT column1, column2
+    FROM table_name
+    WHERE condition;
+
+    RENAME TABLE old_table_name TO new_table_name;
+
+    DROP view view_name;
