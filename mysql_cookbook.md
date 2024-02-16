@@ -197,7 +197,7 @@ CONTROLL FLOW FUNCTIONS:
     SELECT function_name(args);
 
     DROP FUNCTION function_name;
-    
+
 #### Triggers 
 
     DELIMITER //
@@ -227,3 +227,31 @@ CONTROLL FLOW FUNCTIONS:
     DELIMITER ;
 
     DROP EVENT IF EXISTS event_name;
+
+## OPTIMIZATION TECHNIQUES
+
+#### Index
+
+    EXPLAIN statement;
+
+    CREATE INDEX index_name_idx ON table_name(column);
+
+#### Transactions
+
+    START TRANSACTION;
+    statements...
+    COMMIT/ROLLBACK;
+
+#### Common Table Expressions
+
+    WITH cte_name AS (query)...statement
+    SELECT * FROM cte_name;
+
+#### Prepared Statements
+
+    PREPARE prepare_statement_name 
+    FROM SELECT * FROM table_name WHERE orderID = ?;
+
+    SET @order_id = 1;
+
+    EXECUTE prepare_statement_name USING @order_id;
