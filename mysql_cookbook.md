@@ -167,10 +167,15 @@ CONTROLL FLOW FUNCTIONS:
 
 #### Stored Procedures
 
+    DELIMITER //
     CREATE PROCEDURE ProcedureName(parameter_value INT)
+    BEGIN
     SELECT column_name
     FROM table_name
     WHERE column_value = parameter_value;   
+    END//
+
+    DELIMITER ;
 
     CALL ProcedureName();
 
@@ -178,4 +183,47 @@ CONTROLL FLOW FUNCTIONS:
 
 #### User defined Functions
 
+    DELIMITER // enter
     
+    CREATE FUNCTION function_name(param inputtype)
+    RETURNS datatype DETERMINISTIC
+    BEGIN
+      logic
+    RETURN (param * param);
+    END//
+    
+    DELIMITER ;
+    
+    SELECT function_name(args);
+
+    DROP FUNCTION function_name;
+    
+#### Triggers 
+
+    DELIMITER //
+    CREATE TRIGGER trigger_name
+    BEFORE/AFTER TRIGGER TYPE == UPDATE, DELETE, INSERT
+    ON table_name FOR EACH ROW
+    BEGIN
+        STATEMENT ONE
+        STATEMENT TWO
+    END//
+
+    DELIMITER ;
+
+    DROP TRIGGER IF EXISTS schema/database_name.trigger_name;
+
+#### Events
+
+    DELIMITER //
+    
+    CREATE EVENT IF NOT EXISTS event_name
+    ON SCHEDULE [AT]/ONETIME [EVERY]/RECURRING logic 1 + 1
+    DO
+    BEGIN
+        SQL STATEMENT
+    END//
+
+    DELIMITER ;
+
+    DROP EVENT IF EXISTS event_name;
