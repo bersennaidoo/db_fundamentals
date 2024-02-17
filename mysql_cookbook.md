@@ -255,3 +255,10 @@ CONTROLL FLOW FUNCTIONS:
     SET @order_id = 1;
 
     EXECUTE prepare_statement_name USING @order_id;
+
+#### JSON
+
+    type JSON
+
+    SELECT json_column_name->'$Json_key'
+    FROM table_name;
